@@ -1,5 +1,6 @@
 import './about.module.css';
 import Head from 'next/head';
+import axios from 'axios'
 import {
   smartFarmerLogo,
   way2AgriTechLogo,
@@ -42,6 +43,7 @@ export default function About() {
   const dispatch = useDispatch();
   const [lightBox, setLightBox] = useState(false);
   const [lightBoxImage, setLightBoxImage] = useState(null);
+  const [brandsnew,setbrandsnew]=useState([])
   const { brands } = useSelector((state) => state.brands?.brands);
   const { credentials } = useSelector(
     (state) => state.credentials?.credentials
@@ -54,13 +56,23 @@ export default function About() {
   const metaTitle = aboutSeo?.metaTitle;
   const metaDesc = aboutSeo?.metaDesc;
   const backlinks = aboutSeo?.backLinks;
-
+{typeof window!=='undefined' &&
   useEffect(() => {
-    dispatch(getSeo());
-    dispatch(getBrands());
-    dispatch(getCredentials());
+    //dispatch(getSeo());
+    const datafetch=async()=>{
+      try{
+      const res=await axios.get("http://127.0.0.1:4000/api/v1/brands")
+      console.log(res.data)
+      setbrandsnew(res.data)
+      }
+      catch(error){
+        console.log('Error')
+      }
+    }
     //eslint-disable-next-line
+    datafetch();
   }, []);
+}
   return (
     
     <>
@@ -81,7 +93,7 @@ export default function About() {
         ></link>
       </Head>
       
-     {typeof window!=='undefined' &&
+     {typeof window==='undefined' &&
       <div
         className="flex flex-col items-center justify-center  bg-white"
         style={fontFamilyBody}
@@ -948,14 +960,15 @@ export default function About() {
           </div>
         </div>
         {/* collabration */}
+        
         <div className="text-center font-bold text-xl text-yellow-400  m-2 p-2 collaboration">
           <h3 className="heading2 text-center">Collaboration</h3>
           <div className="wrappero">
             <div className="marquee">
               
               <div className="marquee_div">
-                {brands &&
-                  brands.map((brand) => (
+                {brandsnew.brands &&
+                  brandsnew.brands.map((brand) => (
                     <Image 
                       key={brand.id}
                       src={brand.imageurl}

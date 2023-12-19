@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import axios from 'axios'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
