@@ -1,7 +1,6 @@
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
-import * as thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
+import { useEffect } from 'react';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   forgotPasswordReducer,
@@ -107,41 +106,41 @@ const reducer = combineReducers({
   credentials: credentialsReducer,
   theme:ThemeReducer,
 });
+let initialState={}
+const middleware = [thunk];
+const middlewareapp=applyMiddleware(middleware)
+if(typeof window!=='undefined'){
+const cartstorage=localStorage.getItem("cartItems")
+const shippingstorage=localStorage.getItem("shippingInfo")
+const comparestorage=localStorage.getItem("compareItems")
 
-let initialState = {
+
+initialState = {
   cart: {
-    
-    cartItems: 
-    typeof window!=='undefined' ?
-    localStorage.getItem('cartItems')
-      ? JSON.parse(localStorage.getItem('cartItems'))
-      : []
-      :[],
-    shippingInfo:
-    typeof window!=='undefined' ?
-    localStorage.getItem('shippingInfo')
-      ? JSON.parse(localStorage.getItem('shippingInfo'))
-      : {}
-      :{},
+    cartItems:cartstorage
+      ? JSON.parse(cartstorage)
+      : [],
+    shippingInfo: shippingstorage
+      ? JSON.parse(shippingstorage)
+      : {},
   },
   compare: {
-    compareItems:
-    typeof window!=='undefined' ?
-    localStorage.getItem('compareItems')
-      ? JSON.parse(localStorage.getItem('compareItems'))
-      : []
-      :[],
+    compareItems: comparestorage
+      ? JSON.parse(comparestorage)
+      : [],
   },
-};
+}
 
-const middleware = [thunk];
+}
 
-const store = configureStore({
+const store = createStore(
   reducer,
   initialState,
- // middleware: {
- //   thunk: thunk,
- // },
-  devtools: true,
-});
+  //composeWithDevTools(applyMiddleware(...middleware))
+
+);
+
+
+
+
 export default store;

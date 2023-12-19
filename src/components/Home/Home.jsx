@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import Banner from './Banner/Banner';
 import ProductSlider from './ProductSlider/ProductSlider';

@@ -117,7 +117,7 @@
   align-items: center;
   position: relative;
   left: 20px;
-  bottom: 8px;
+  
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .vision3 {
@@ -792,11 +792,22 @@
 .text {
   line-height: 28px;
   flex-basis: 50%;
-  margin-left: -250px;
+  
   font-size: 15px;
   margin-right: 100px;
   text-align: justify;
   font-family: 'Times New Roman', Times, serif;
+}
+.headingname{
+  text-transform: initial;
+  color: #215d0e;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 2px solid #ffc100;
+  width: 157px;
+  
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 30px;
 }
 .collaboration h3 {
   text-transform: initial;
@@ -805,7 +816,7 @@
   font-weight: bold;
   border-bottom: 2px solid #ffc100;
   width: 157px;
-  translate: 599px;
+  
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin-bottom: 30px;
 }
@@ -1516,6 +1527,7 @@ left: 208px;
       margin: auto;
       width: 490px;
     }
+    
     .dobutton{
       margin:auto;
       width: 490px;
@@ -1526,6 +1538,7 @@ left: 208px;
   .titleBox {
     border: 2px solid #ffc100;
     line-height: 1.875rem;
+    background-color: #215d0e;
     height: fit-content;
     width: 30vw;
     font-family: 'Times New Roman', Times, serif;
@@ -2399,5 +2412,6 @@ left: 208px;
     max-width: 280px;
     max-height: 340px;
    }
+   
   }
   

@@ -1,4 +1,5 @@
 import './about.module.css';
+import Head from 'next/head';
 import {
   smartFarmerLogo,
   way2AgriTechLogo,
@@ -25,11 +26,12 @@ import {
   TrendingUp,
   Download,
 } from '@mui/icons-material';
+import Image from 'next/image';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+
 import { getSeo } from '../../actions/seoAction';
 import { getBrands, getCredentials } from '../../actions/aboutAction';
 import {LazyLoadComponent} from 'react-lazy-load-image-component'
@@ -60,8 +62,10 @@ export default function About() {
     //eslint-disable-next-line
   }, []);
   return (
+    
     <>
-      <Helmet>
+    
+      <Head>
         <title>Way2SmartFarmer | About Us</title>
         <meta
           name="viewport"
@@ -75,32 +79,22 @@ export default function About() {
           rel="canonical"
           href="https://www.way2smartfarmer.com/about"
         ></link>
-      </Helmet>
-      <div className="bg-gray-100 hidden">
-        {backlinks?.split(',').map((backlink, index) => (
-          <a
-            key={index}
-            href={backlink.trim()}
-            target="_blank"
-            rel="noreferrer"
-            name="backlinks"
-          >
-            {backlink.trim()}
-          </a>
-        ))}
-      </div>
+      </Head>
+      
+     {typeof window!=='undefined' &&
       <div
-        className="flex flex-col items-center justify-center lg:mt-20 bg-white"
+        className="flex flex-col items-center justify-center  bg-white"
         style={fontFamilyBody}
-      >
-        <div className="flex flex-col justify-center green-background text-yellow-400 p-3 m-3 max-w-lg rounded-lg titleBox">
-          <center>
-            <p>Way2Agribusiness India Pvt. Ltd. (Way2ABI)</p>
-          </center>
-          <center>
-            <p>ವೇ2ಅಗ್ರಿಬಿಸ್ನೆಸ್ ಇಂಡಿಯಾ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್</p>
-          </center>
+      > {typeof window==='undefined' && (
+        <div className="flex flex-col justify-center  text-yellow-400 p-3 m-3 max-w-lg rounded-lg titleBox ">
+          <p style={{textAlign:'center'}}>
+          Way2Agribusiness India Pvt. Ltd. (Way2ABI)
+          </p>
+          <p style={{textAlign:'center'}}>
+            ವೇ2ಅಗ್ರಿಬಿಸ್ನೆಸ್ ಇಂಡಿಯಾ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್
+          </p>
         </div>
+      )}
         <div className="business flex flex-col md:flex-row items-center justify-center px-3 m-5 bg-white-100 max-w-6xl rounded-lg aboutBox">
           <img
             src={way2AbiLogo}
@@ -112,7 +106,7 @@ export default function About() {
           </p>
         </div>
         <div>
-          <h2 className="heading2 ">Our Vision & Mission</h2>
+          <h2 className="heading2 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-40 font-sans mb-8">Our Vision & Mission</h2>
 
           {/* vision 2 boxes */}
           <div className="mt-2 visionBox flex flex-col md:flex-row">
@@ -202,7 +196,7 @@ export default function About() {
         </div>
         {/* Five for Five */}
         <div className="flex flex-col p-2 m-2 ">
-          <h2 className="heading2">Five for Five</h2>
+          <h2 className="heading2 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-70 font-sans mb-8">Five for Five</h2>
           <div className="fffOut mt-2 flex flex-col md:flex-row justify-center items-center">
             {/* left */}
             <div className="flex flex-col">
@@ -257,25 +251,25 @@ export default function About() {
   </h4>
   <div className='flex flex-wrap justify-between ml-5'>
     <div className="imgh1">
-      <LazyLoadImage className='' style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700558070/download_ihysuc.webp" alt="farmer association" />
+      <Image className='' style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700558070/download_ihysuc.webp" width={100} height={100} alt="farmer association" />
       <div className='text-center font-bold'><strong>Farmers & Farmers’ Association</strong></div>
     </div>
     <div className="imgh2">
-      <LazyLoadImage style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559212/1_xrsux0.webp" alt="farmer association" />
+      <Image style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559212/1_xrsux0.webp" alt="farmer association" width={100} height={100}/>
       <div className='text-center font-bold'><strong>Agri Start-ups and Students</strong></div>
     </div>
     <div className="imgh3">
-      <LazyLoadImage style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559601/3_fcu7hy.webp" alt="farmer association" />
+      <Image style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559601/3_fcu7hy.webp" alt="farmer association" width={100} height={100} />
       <div className='text-center font-bold'><strong>Entrepreneurs & Trading Community</strong></div>
     </div>
   </div>
   <div className='flex justify-evenly pt-3 flex-wrap'>
     <div className="image-container">
-      <LazyLoadImage style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700561000/6_r6en0b.webp" alt="farmer association" />
+      <Image style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700561000/6_r6en0b.webp" alt="farmer association" width={100} height={100} />
       <div className='text-center font-bold'><strong>Government Depts. & Agencies</strong></div>
     </div>
     <div className="image-container">
-      <LazyLoadImage style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559844/5_lqe7gr.webp" alt="farmer association" />
+      <Image style={{ width: '100px', height: '100px', borderRadius: '50%', margin: 'auto' }} src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700559844/5_lqe7gr.webp" alt="farmer association" width={100} height={100} />
       <div className='text-center font-bold'><strong>Agritech Products Manufacturers</strong></div>
     </div>
  </div>
@@ -296,7 +290,7 @@ export default function About() {
         
         {/* Our Services */}
         <div className="brandBox mt-2">
-        <h2 className="heading2">Our Brands</h2>
+        <h2 className="heading2 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-[6rem] font-sans mb-8">Our Brands</h2>
        {/*  <div className='mx-auto flex flex-row flex-wrap justify-center items-center justify-between mx-auto'>
             <div className=''>
 <img className='max-w-[200px] h-auto mx-auto' src={Agripro} alt='way2agripro'/>
@@ -314,7 +308,7 @@ export default function About() {
       {/* First Container */}
       <div className="flex flex-col items-center justify-center servicesText m-2 p-2 bg-white shadow-2xl rounded-md service">
         <h3 className='text-center justify-center font-bold'>Way2Agritech</h3>
-        <LazyLoadImage
+        <Image
           src={way2AgriTechLogo}
           alt="logo of way2agripro"
           width={150}
@@ -349,7 +343,7 @@ export default function About() {
       {/* Second Container */}
       <div className="flex flex-col items-center justify-center servicesText m-2 p-2 bg-white shadow-2xl rounded-md service">
         <h3 className='text-center justify-center font-bold'>Way2Foods</h3>
-        <LazyLoadImage
+        <Image
           src={way2FoodsLogo}
           alt="logo of way2agripro"
           width={150}
@@ -384,11 +378,11 @@ export default function About() {
 
           
         <div>
-          <h2 className="heading2 mt-4">Services We Offer</h2>
+          <h2 className="heading2 mt-4 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-[9rem] font-sans mb-8">Services We Offer</h2>
           <div className="flex flex-col md:flex-row serviceBox">
             <div className="flex flex-col items-center justify-center servicesText m-2 p-2 bg-white shadow-2xl rounded-md service">
               <h3 className='text-center justify-center font-bold'>Way2AgriIntel AI</h3>
-              <LazyLoadImage
+              <Image
                 src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1699439977/Static%20Images/Way2AgriIntel_AI_tg4k8y.webp"
                 alt="logo of way2agribusiness"
                 width={150}
@@ -421,7 +415,7 @@ export default function About() {
 
             <div className="flex flex-col items-center justify-center servicesText m-2 p-2 bg-white shadow-2xl rounded-md service">
             <h3 className='text-center justify-center font-bold'>Way2AgriPro</h3>
-              <LazyLoadImage
+              <Image
                 src="https://res.cloudinary.com/dm71xhdxd/image/upload/v1700026197/Way2AgriPro_igbq3r_zplhsb.webp"
                 alt="logo of way2agribusiness"
                 width={150}
@@ -453,7 +447,7 @@ export default function About() {
             </div>
             <div className="flex flex-col items-center justify-center servicesText m-2 p-2 bg-white shadow-2xl rounded-md service">
             <h3 className='text-center justify-center font-bold'>Way2Agribiz PMC</h3>
-              <LazyLoadImage
+              <Image
                 src={pmcLogo}
                 alt="logo of way2agribusiness"
                 width={140}
@@ -489,10 +483,10 @@ export default function About() {
         
         {/* Our mobile apps */}
         <div className="flex flex-col p-2 m-2 mb-0 pb-0 mt-3 pt-0">
-          <h2 className="heading2">Our Mobile Apps</h2>
+          <h2 className="heading2 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-[8rem] font-sans mb-8">Our Mobile Apps</h2>
           <div className="mobileBox flex flex-col md:flex-row">
             <div className="mobileItem flex flex-col md:flex-row">
-              <LazyLoadImage
+              <Image
                 src={way2AgriFBI}
                 alt="logo of way2agribusiness"
                 width={150}
@@ -510,21 +504,21 @@ export default function About() {
                   <li>Process to follow by app users</li>
                 </ul>
                 <button className="p-2 mt-7 bg-yellow-400 border-2 border-yellow_theme flex items-center text-black rounded-full max-w-max">
-                  <i className='fab fa-google-play p-1 text-blue-500'></i>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.way2abi.way2abi"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="dn1"
-                  >
-                    <span className="">Download Agri FBI</span>
-                  </a>
-                 
-                </button>
+  <i className="fab fa-google-play p-1 text-blue-500"></i>
+  <a
+    href="https://play.google.com/store/apps/details?id=com.way2abi.way2abi"
+    target="_blank"
+    rel="noreferrer"
+    className="dn1"
+  >
+    <span className="">Download Agri FBI</span>
+  </a>
+</button>
+
               </div>
             </div>
             <div className="mobileItem flex flex-col md:flex-row">
-              <LazyLoadImage
+              <Image
                 src={way2agriCM}
                 alt="logo of way2agribusiness"
                 width={150}
@@ -563,12 +557,12 @@ export default function About() {
         </div>
         {/* Online services */}
         <div className="ourOnlineService">
-          <h2 className="heading2">Our Online Services</h2>
+          <h2 className="heading2 mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-40 font-sans mb-8 mt-2">Our Online Services</h2>
           <div className="wrap">
             <div className="wrap1">
               <ul className="relative ">
                 <li className="services_main">
-                  <LazyLoadImage
+                  <Image
                     className="container1"
                     src={serviceImage}
                     alt="container logo"
@@ -581,7 +575,7 @@ export default function About() {
                     href="https://www.way2agribusiness.com/"
                     title="Way2Agribusiness"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={way2AbiLogo}
                       alt="abi"
                       className="agri-img"
@@ -595,7 +589,7 @@ export default function About() {
                     href="https://www.way2agriintel.com/"
                     title="Way2Agriintel"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={way2AgriIntelLogo}
                       alt="kab"
                       className="f4f-img"
@@ -606,7 +600,7 @@ export default function About() {
                 </li>
                 <li>
                   <a target="_blank" rel="noreferrer" href="https://www.way2agritech.com/" title="Way2Agritech">
-                    <LazyLoadImage
+                    <Image
                       src={way2AgriTechLogo}
                       alt="way2at"
                       className="agritech-img"
@@ -617,7 +611,7 @@ export default function About() {
                 </li>
                 <li>
                   <a target="_blank" rel="noreferrer" href="https://www.way2foods.com/" title="Way2Foods">
-                    <LazyLoadImage
+                    <Image
                       src={way2FoodsLogo}
                       alt="way2f"
                       className="foods-img"
@@ -631,7 +625,7 @@ export default function About() {
                     href="https://www.way2smartfarmer.com/"
                     title="Way2SmartFarmer"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={smartFarmerLogo}
                       alt="way2sf"
                       className="smartfarmer-img"
@@ -642,7 +636,7 @@ export default function About() {
                 </li>
                 <li>
                   <a target="_blank" rel="noreferrer" href="https://www.powertiller.in/" title="PowerTiller">
-                    <LazyLoadImage
+                    <Image
                       src={powerTillerLogo}
                       alt="pt"
                       className="pt-img"
@@ -656,7 +650,7 @@ export default function About() {
                     href="https://www.drsoilhealth.com/"
                     title="Dr Soil Health"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={drSoilLogo}
                       alt="dsh"
                       className="dsh-img"
@@ -667,7 +661,7 @@ export default function About() {
                 </li>
                 <li>
                   <a target="_blank" rel="noreferrer" href="https://www.farmneedz.com/" title="FarmNeedz">
-                    <LazyLoadImage
+                    <Image
                       src={farmNeedzLogo}
                       alt="fn"
                       className="fn-img"
@@ -681,7 +675,7 @@ export default function About() {
                     href="https://www.way2vegetables.com/"
                     title="Way2Vegetables"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={way2vegetablesLogo}
                       alt="w2v"
                       className="veg-img"
@@ -692,7 +686,7 @@ export default function About() {
                 </li>
                 <li>
                   <a target="_blank" rel="noreferrer" href="https://www.way2groceries.in/" title="Way2Groceries">
-                    <LazyLoadImage
+                    <Image
                       src={way2GroceriesLogo}
                       alt="w2g"
                       className="grocery-img"
@@ -706,7 +700,7 @@ export default function About() {
                     href="https://www.urbanagriculture.in/"
                     title="UrbanAgriculture"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={urbanAgricultureLogo}
                       alt="uab"
                       className="uab-img"
@@ -720,7 +714,7 @@ export default function About() {
                     href="https://www.karnatakaagribusiness.com/"
                     title="KarnatakaAgribusiness"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={fiveToFiveImage}
                       alt="f4f"
                       className="kab-img"
@@ -734,7 +728,7 @@ export default function About() {
                     href="https://play.google.com/store/apps/details?id=com.way2abi.way2abi&pli=1"
                     title="Way2ABI Agri FBI"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={way2AgriFBI}
                       alt="fbi"
                       className="fbi-img"
@@ -748,7 +742,7 @@ export default function About() {
                     href="https://play.google.com/store/apps/details?id=com.ionicframework.way2market617518"
                     title="Way2Market Agri CM"
                   >
-                    <LazyLoadImage
+                    <Image
                       src={way2agriCM}
                       alt="cm"
                       className="cm-img"
@@ -808,7 +802,7 @@ export default function About() {
         {/* for lightbox */}
         {lightBox && (
           <div className="modal" onClick={() => setLightBox(false)}>
-            <LazyLoadImage
+            <Image
               src={lightBoxImage}
               alt={lightBoxImage}
               width={140}
@@ -818,10 +812,11 @@ export default function About() {
           </div>
         )}
         {/* Our Credentials */}
-        <h3 className="heading2">Our Credentials</h3>
+        <h3 className="heading2 text-base font-bold text-green-800 border-b-2 border-yellow-300 w-[8rem] font-sans mb-8">Our Credentials</h3>
         <div className="mt-2">
           <h4 className="yellowBackHeading">Awards</h4>
           <div className="mt-3">
+           
             <div className="imagesContainer">
               {credentials &&
                 credentials.length > 0 &&
@@ -836,7 +831,7 @@ export default function About() {
                         setLightBoxImage(image.image);
                       }}
                     >
-                      <LazyLoadImage
+                      <Image
                         src={image.image}
                         alt={image.alt}
                         title={image.title}
@@ -847,10 +842,12 @@ export default function About() {
                       <p className="image-name">{image.name}</p>
                     </div>
                   ))}
-            </div>
+            </div> 
           </div>
+                  
           <h4 className="yellowBackHeading">Media Coverages</h4>
           <div className="mt-3">
+            
             <div className="imagesContainer flex justify-around ">
               {credentials &&
                 credentials.length > 0 &&
@@ -865,7 +862,7 @@ export default function About() {
                         setLightBoxImage(imageObj.image);
                       }}
                     >
-                      <LazyLoadImage
+                      <Image
                         src={imageObj.image}
                         alt={imageObj.title}
                         width={140}
@@ -876,9 +873,12 @@ export default function About() {
                     </div>
                   ))}
             </div>
+            
           </div>
+            
           <h4 className="yellowBackHeading">Approvals and Licenses</h4>
           <div className="mt-3">
+            
             <div className="imagesContainer flex justify-around ">
               {credentials &&
                 credentials.length > 0 &&
@@ -893,9 +893,10 @@ export default function About() {
                         setLightBoxImage(image.image);
                       }}
                     >
-                      <LazyLoadImage
+                      <Image
                         src={image.image}
                         alt={image.title}
+                        width={100} height={100}
                         style={{ height: '200px', width: '140px' }}
                         className="credImage"
                       />
@@ -903,14 +904,16 @@ export default function About() {
                     </div>
                   ))}
             </div>
+            
           </div>
         </div>
         <br />
         {/* videos */}
         <div>
-          <h3 className="heading2">Way2ABI Videos</h3>
+          <h3 className="text-center mx-auto text-base font-bold text-green-800 border-b-2 border-yellow-300 w-40 font-sans mb-8">Way2ABI Videos</h3>
           <br />
           <div className="videoContainer">
+          
             <div>
               <LazyLoadComponent>
               <video
@@ -928,6 +931,7 @@ export default function About() {
               </video>
               </LazyLoadComponent>
             </div>
+          
             <p className="text text-green-800 text-justify videoText">
               Way2ABI is a comprehensive solution for the problems faced by
               agribusiness operations. They offer project services, providing
@@ -945,13 +949,14 @@ export default function About() {
         </div>
         {/* collabration */}
         <div className="text-center font-bold text-xl text-yellow-400  m-2 p-2 collaboration">
-          <h3 className="heading2">Collaboration</h3>
+          <h3 className="heading2 text-center">Collaboration</h3>
           <div className="wrappero">
             <div className="marquee">
+              
               <div className="marquee_div">
                 {brands &&
                   brands.map((brand) => (
-                    <LazyLoadImage 
+                    <Image 
                       key={brand.id}
                       src={brand.imageurl}
                       alt={brand.alt}
@@ -961,11 +966,15 @@ export default function About() {
                     />
                   ))}
               </div>
+              
             </div>
           </div>
         </div>
       </div>
+    
+                  }          
     </>
+                  
   );
 }
 // export async function getServerSideProps() {
