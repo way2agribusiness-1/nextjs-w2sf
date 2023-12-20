@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -50,7 +50,7 @@ const StyledMenu = styled((props) => (
 
 export default function CustomizedMenus({ title, items }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const navigate = useNavigate();
+  const router=useRouter()
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -59,7 +59,7 @@ export default function CustomizedMenus({ title, items }) {
     setAnchorEl(null);
   };
   const handleNavigation = (targetRoute) => {
-    navigate(targetRoute);
+    router.push(targetRoute);
   };
   return (
     <div>

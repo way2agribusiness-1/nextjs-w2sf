@@ -3,21 +3,22 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import { Link, useNavigate } from 'react-router-dom';
+import {Link} from 'next/link'
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../../actions/userAction';
 
 const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router=useRouter()
   const { enqueueSnackbar } = useSnackbar();
 
   const { wishlistItems } = useSelector((state) => state.wishlist);
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/login');
+    router.push('/login');
     enqueueSnackbar('Logout Successfully', { variant: 'success' });
     setTogglePrimaryDropDown(false);
   };
@@ -35,7 +36,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
       {user.role === 'admin' && (
         <Link
           className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t"
-          to="/admin/dashboard"
+          href="/admin/dashboard"
           onClick={() => setTogglePrimaryDropDown(false)}
         >
           <span className="text-primary-blue">
@@ -47,7 +48,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
 
       <Link
         className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t"
-        to="/account"
+        href="/account"
         onClick={() => setTogglePrimaryDropDown(false)}
       >
         <span className="text-primary-blue">
@@ -63,7 +64,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
             {title === 'Wishlist' ? (
               <Link
                 className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50"
-                to={redirect}
+                href={redirect}
                 key={i}
               >
                 <span className="text-primary-blue">{icon}</span>
@@ -75,7 +76,7 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
             ) : (
               <Link
                 className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50"
-                to={redirect}
+                href={redirect}
                 key={i}
               >
                 <span className="text-primary-blue">{icon}</span>

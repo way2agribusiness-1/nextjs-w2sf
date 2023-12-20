@@ -20,9 +20,10 @@ import {
   WhatsApp,
   Apple,
 } from '@mui/icons-material';
-import './footer.css';
+import './footer.module.css';
 import React from 'react';
 import SpaIcon from '@mui/icons-material/Spa';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -36,74 +37,74 @@ const Footer = () => {
               <h4 className="mr-2">Follow Us</h4>
               <ul className="footerSocialLink">
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://www.facebook.com/way2agribusiness/"
                     title="Facebook"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FacebookRounded className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href={'https://wa.me/9449004956'}
                     title="WhatsApp"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <WhatsApp className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://www.instagram.com/way2agribusiness/"
                     title="Instagram"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Instagram className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://www.linkedin.com/feed/?trk=homepage-basic_signin-form_submit"
                     title="LinkedIn"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <LinkedIn className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://twitter.com/Way2agribusines"
                     title="Twitter"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Twitter className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://www.youtube.com/channel/UCEpkh59M-MDOj0TH6lxRpMg"
                     title="Youtube"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <YouTube className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-2">
-                  <a
+                  <Link
                     href="https://in.pinterest.com/Way2Agritech/_saved/"
                     title="Pinterest"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Pinterest className="socialIcon" />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -119,14 +120,14 @@ const Footer = () => {
             <LocationOn className="contactUsIcons" />
             <div>
               <span className="footerLink text-justify">
-                <a
+                <Link
                   href="https://www.google.com/maps/place/Way2Agribusiness+India+Pvt+Ltd/@13.015956,77.54541,15z/data=!4m6!3m5!1s0x3bae234a43de2765:0x4dc2c8416831cc0!8m2!3d13.0159559!4d77.5454099!16s%2Fg%2F11b6llkwn7?hl=en&entry=ttu"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   ಕೃಷಿ ಉದ್ದಿಮೆ ಕೇಂದ್ರ/ Agribusiness Center # 636, BDA Block 2,
                   APMC (RMC) Yard, Yeshwanthpura, Bengaluru - 560022
-                </a>
+                </Link>
               </span>
             </div>
           </div>
@@ -134,19 +135,19 @@ const Footer = () => {
             <Call className="contactUsIcons" />
             <div>
               <span className="footerLink">
-                <a href="tel:9449004956">9449004956</a>
+                <Link href="tel:9449004956">9449004956</Link>
               </span>
               <br />
               <span className="footerLink">
-                <a href="tel:8277078435">8277078435</a>
+                <Link href="tel:8277078435">8277078435</Link>
               </span>
               <br />
               <span className="footerLink">
-                <a href="tel:8995000388">8095000388</a>
+                <Link href="tel:8995000388">8095000388</Link>
               </span>
               <br />
               <span className="footerLink">
-                <a href="tel:080 24484173">080-24484173</a>
+                <Link href="tel:080 24484173">080-24484173</Link>
               </span>
             </div>
           </div>
@@ -154,21 +155,21 @@ const Footer = () => {
             <Mail className="h-5 w-5 text-yellow-100 mr-2" />
             <div>
               <span className="footerLink footerMails">
-                <a href="mailto:dr.prasannad@way2agribusiness.com">
+                <Link href="mailto:dr.prasannad@way2agribusiness.com">
                   dr.prasannad@way2agribusiness.com
-                </a>
+                </Link>
               </span>
               <br />
               <span className="footerLink footerMails">
-                <a href="mailto:way2agritech@way2agribusiness.com">
+                <Link href="mailto:way2agritech@way2agribusiness.com">
                   way2agritech@way2agribusiness.com
-                </a>
+                </Link>
               </span>
               <br />
               <span className="footerLink footerMails">
-                <a href="mailto:way2agritech@gmail.com">
+                <Link href="mailto:way2agritech@gmail.com">
                   way2agritech@gmail.com
-                </a>
+                </Link>
               </span>
             </div>
           </div>
@@ -199,144 +200,144 @@ const Footer = () => {
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Business className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://www.way2agribusiness.com"
                       title="https://www.way2agribusiness.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Corporate Website
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://www.way2agribusiness.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2agribusiness.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <LocalGroceryStore className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://www.way2agritech.com"
                       title="https://www.way2agritech.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Agri Input Brand
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://www.way2agritech.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2agritech.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Apple className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://www.way2foods.in"
                       title="https://www.way2foods.in"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Agri Output Brand
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://www.way2foods.in"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2foods.in
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <LocalGroceryStore className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://www.karnatakaagribusiness.com"
                       title="https://www.karnatakaagribusiness.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Social Media Web
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://www.karnatakaagribusiness.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.karnatakaagribusiness.com
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mr-1">
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Agriculture className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://powertiller.in"
                       title="https://powertiller.in"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Farm Machinery
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://powertiller.in"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.powertiller.in
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Grass className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://drsoilhealth.com"
                       title="https://drsoilhealth.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       PGR & PPP Products
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://drsoilhealth.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.drsoilhealth.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Yard className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://urbanagriculture.in"
                       title="https://urbanagriculture.in"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Terrace Gardening
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://urbanagriculture.in"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.urbanagriculture.in
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
@@ -345,104 +346,104 @@ const Footer = () => {
                       className="contactUsIcons"
                     /> */}
                     <SpaIcon className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://way2vegetables.com"
                       title="https://way2vegetables.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Vegetables Online
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://way2vegetables.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2vegetables.com
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <LocalGroceryStore className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://way2groceries.in"
                       title="https://way2groceries.in"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Groceries Online
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://way2groceries.in"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2groceries.in
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <WorkspacePremium className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://way2smartfarmer.com"
                       title="https://way2smartfarmer.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Compare & Select
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://way2smartfarmer.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2smartfarmer.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <StoreMallDirectory className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://www.farmneedz.com/"
                       title="https://www.farmneedz.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       IndiaMart Platform
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://www.farmneedz.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.farmneedz.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="footer-icon-link">
                   <div className="serviceLinkBox footerLink">
                     <Psychology className="contactUsIcons" />
-                    <a
+                    <Link
                       href="https://way2agriintel.com"
                       title="https://way2agriintel.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Agri Intelligence
-                    </a>
+                    </Link>
                   </div>
-                  <a
+                  <Link
                     href="https://way2agriintel.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     www.way2agriintel.com
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -451,62 +452,62 @@ const Footer = () => {
               <div className="footer-icon-link">
                 <div className="serviceLinkBox footerLink">
                   <PhoneAndroid className="contactUsIcons" />
-                  <a
+                  <Link
                     href="https://play.google.com/store/apps/details?id=com.wayagritech.way2agritech"
                     title="https://play.google.com/store/apps/details?id=com.wayagritech.way2agritech"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Agri Input Mobile App
-                  </a>
+                  </Link>
                 </div>
-                <a
+                <Link
                   href="https://play.google.com/store/apps/details?id=com.wayagritech.way2agritech"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   play.google.com/store/apps/...
-                </a>
+                </Link>
               </div>
               <div className="footer-icon-link">
                 <div className="serviceLinkBox footerLink">
                   <PhoneAndroid className="contactUsIcons" />
-                  <a
+                  <Link
                     href="https://play.google.com/store/apps/details?id=com.way2abi.way2abi"
                     title="https://play.google.com/store/apps/details?id=com.way2abi.way2abi"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Agri FBI Mobile App
-                  </a>
+                  </Link>
                 </div>
-                <a
+                <Link
                   href="https://play.google.com/store/apps/details?id=com.way2abi.way2abi"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   play.google.com/store/apps/...
-                </a>
+                </Link>
               </div>
               <div className="footer-icon-link">
                 <div className="serviceLinkBox footerLink">
                   <PhoneAndroid className="contactUsIcons" />
-                  <a
+                  <Link
                     href="https://play.google.com/store/apps/details?id=com.ionicframework.way2market617518"
                     title="https://play.google.com/store/apps/details?id=com.ionicframework.way2market617518"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Agri CM Mobile App
-                  </a>
+                  </Link>
                 </div>
-                <a
+                <Link
                   href="https://play.google.com/store/apps/details?id=com.ionicframework.way2market617518"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   play.google.com/store/apps/...
-                </a>
+                </Link>
               </div>
             </div>
           </div>

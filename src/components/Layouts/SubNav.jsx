@@ -5,7 +5,7 @@ import {
   marketMitraSubNav,
   agriCliniSubNav,
 } from '../../imageLinks';
-import './Subnav.css'
+import './Subnav.module.css'
 function SubNav() {
 
   return (

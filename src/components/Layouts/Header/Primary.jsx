@@ -8,8 +8,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { logoutUser } from '../../../actions/userAction';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 
 const StyledMenu = styled((props) => (
@@ -57,7 +58,7 @@ const StyledMenu = styled((props) => (
 
 export default function CustomizedMenus({ user }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router=useRouter()
   const { enqueueSnackbar } = useSnackbar();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -71,7 +72,7 @@ export default function CustomizedMenus({ user }) {
   const handleLogout = () => {
     dispatch(logoutUser());
     enqueueSnackbar('Logout Successfully', { variant: 'success' });
-    navigate('/');
+    router.push('/');
   };
   return (
     <div>
@@ -107,7 +108,7 @@ export default function CustomizedMenus({ user }) {
           <MenuItem onClick={handleClose}>
             <Link
               className=" flex gap-3 items-center hover:bg-gray-50 rounded-t"
-              to="/admin/dashboard"
+              href="/admin/dashboard"
             >
               <span className="text-primary-blue">
                 <DashboardIcon sx={{ fontSize: '18px' }} />
@@ -119,7 +120,7 @@ export default function CustomizedMenus({ user }) {
         <MenuItem onClick={handleClose}>
           <Link
             className=" w-full flex gap-3 items-center hover:bg-gray-50 rounded-t"
-            to="/account"
+            href="/account"
           >
             <span className="text-primary-blue">
               <AccountCircleIcon sx={{ fontSize: '18px' }} />

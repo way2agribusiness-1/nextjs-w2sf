@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Slider from 'react-slick';
 import { getRandomProducts } from '../../../utils/functions';
 import { settings } from '../DealSlider/DealSlider';
@@ -19,8 +19,9 @@ const ProductSlider = ({ title, tagline }) => {
           <p className="text-sm text-gray-600">{tagline}</p>
         </div>
         <Link
-          to="/agritechproducts"
-          className="bg-primary-blue text-xs font-medium text-white px-3 py-2.5 rounded-sm shadow-lg uppercase"
+          href="/agritechproducts"
+          style={{backgroundColor:'lawngreen'}}
+          className=" text-xs font-medium text-black px-3 py-2.5 rounded-sm shadow-lg uppercase"
         >
           view all
         </Link>

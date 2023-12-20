@@ -1,10 +1,11 @@
-import { Helmet } from "react-helmet";
+import Head from "next/head";
+
 
 const MetaData = ({ title }) => {
     return (
-        <Helmet>
+        <Head>
             <title>{title}</title>
-        </Helmet>
+        </Head>
     );
 };
 

@@ -18,7 +18,7 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ImageIcon from '@mui/icons-material/Image';
 import { useDispatch, useSelector } from 'react-redux';
-import './Sidebar.css';
+import './Sidebar.module.css';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../../actions/userAction';
 import Call from '@mui/icons-material/Call';

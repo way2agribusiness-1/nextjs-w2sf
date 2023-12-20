@@ -5,7 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Primary from './Primary';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import DarkLightTheme from './DarkLightTheme';
 
 const Header = () => {
@@ -19,38 +19,38 @@ const Header = () => {
   const navigationList = (
     <>
       <Link
-        to="/"
+        href="/"
         className="hover:text-green-600  green-text font-bold lg:text-sm"
       >
         Home
       </Link>
       <Link
-        to="/about"
+        href="/about"
         className="hover:text-green-600 green-text font-bold lg:text-sm"
       >
         About Us
       </Link>
       <Link
-        to="/contact"
+        href="/contact"
         className="hover:text-green-600 green-text font-bold lg:text-sm"
       >
         Contact Us
       </Link>
       <Link
-        to="/knowledges"
+        href="/knowledges"
         className="hover:text-green-600 green-text font-bold lg:text-sm"
       >
         Knowledge Center
       </Link>
       <Link
-        to="/israel-agritech"
+        href="/israelagritech"
         className="hover:text-green-600 green-text font-bold lg:text-sm"
       >
         Intech.
       </Link>
 
       <Link
-        to="/cart"
+        href="/cart"
         className="flex items-center text-green-500 font-medium gap-2 relative"
       >
         <span>
@@ -63,7 +63,7 @@ const Header = () => {
         )}
       </Link>
       <Link
-        to="/wishlist"
+        href="/wishlist"
         className="flex items-center text-green-500 font-medium gap-2 relative"
         aria-label="Link label"
       >
@@ -79,7 +79,7 @@ const Header = () => {
 
       {isAuthenticated === false ? (
         <Link
-          to="/login"
+          href="/login"
           className="px-1 py-0.5 green-background border font-medium rounded-md cursor-pointer hover:bg-green-600 text-yellow-400"
         >
           Login
@@ -120,7 +120,7 @@ const Header = () => {
       <div className="px-3 w-full flex justify-between lg:justify-around items-center relative">
         {/* <!-- logo, name & search container --> */}
         <div className="flex flex-row w-[20vw] items-center">
-          <Link className="h-full mr-2" to="/">
+          <Link className="h-full mr-2" href="/">
             <img
               draggable="false"
               className="object-contain main-logo"
@@ -132,7 +132,7 @@ const Header = () => {
               width={55}
             />
           </Link>
-          <Link to="/">
+          <Link href="/">
             <h1
               className="font-bold green-text "
               style={{ fontFamily: '"Times New Roman", Times, serif' }}

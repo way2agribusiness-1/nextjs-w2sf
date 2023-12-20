@@ -59,6 +59,7 @@ import {
 import { seoReducer } from './reducers/seoReducer';
 import { brandsReducer, credentialsReducer } from './reducers/aboutReducer';
 import ThemeReducer from './reducers/ThemeReducer';
+import dynamic from 'next/dynamic';
 
 const reducer = combineReducers({
   user: userReducer,
@@ -145,5 +146,5 @@ const store = createStore(
 
 
 
-export default store;
+export default store
 
