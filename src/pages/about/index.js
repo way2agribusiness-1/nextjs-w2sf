@@ -1,6 +1,7 @@
 import './about.module.css';
 import Head from 'next/head';
-import axios from 'axios'
+import axios from 'axios';
+import dynamic from 'next/dynamic';
 import {
   smartFarmerLogo,
   way2AgriTechLogo,
@@ -36,14 +37,39 @@ import { useState, useEffect } from 'react';
 import { getSeo } from '../../actions/seoAction';
 import { getBrands, getCredentials } from '../../actions/aboutAction';
 import {LazyLoadComponent} from 'react-lazy-load-image-component'
-export default function About() {
+import { getServersidebackend,getServersidebackend1 } from '@/lib/database';
+import { getStaticProps} from 'next';
+
+export async function getServerSideProps(){
+  try{
+const brandfetch=await getServersidebackend();
+console.log(brandfetch)
+const credentialfetch=await getServersidebackend1();
+console.log(credentialfetch)
+return{
+  props:{
+    brandfetch,
+    credentialfetch
+  }
+}
+  }
+  catch(error){
+    console.error('Error fetchind data',error)
+    return{
+      props:{
+        brandfetch:[],
+        credentialfetch:[]
+      }
+    }
+  }
+}
+const About=({brandfetch,credentialfetch})=>{
   const fontFamilyBody = {
     fontFamily: "'Times New Roman', 'Times', serif",
   };
   const dispatch = useDispatch();
   const [lightBox, setLightBox] = useState(false);
   const [lightBoxImage, setLightBoxImage] = useState(null);
-  const [brandsnew,setbrandsnew]=useState([])
   const { brands } = useSelector((state) => state.brands?.brands);
   const { credentials } = useSelector(
     (state) => state.credentials?.credentials
@@ -56,23 +82,8 @@ export default function About() {
   const metaTitle = aboutSeo?.metaTitle;
   const metaDesc = aboutSeo?.metaDesc;
   const backlinks = aboutSeo?.backLinks;
-{typeof window!=='undefined' &&
-  useEffect(() => {
-    //dispatch(getSeo());
-    const datafetch=async()=>{
-      try{
-      const res=await axios.get("http://127.0.0.1:4000/api/v1/brands")
-      console.log(res.data)
-      setbrandsnew(res.data)
-      }
-      catch(error){
-        console.log('Error')
-      }
-    }
-    //eslint-disable-next-line
-    datafetch();
-  }, []);
-}
+
+ 
   return (
     
     <>
@@ -93,11 +104,11 @@ export default function About() {
         ></link>
       </Head>
       
-     {typeof window==='undefined' &&
+     {typeof window!=='undefined' &&
       <div
         className="flex flex-col items-center justify-center  bg-white"
         style={fontFamilyBody}
-      > {typeof window==='undefined' && (
+      > 
         <div className="flex flex-col justify-center  text-yellow-400 p-3 m-3 max-w-lg rounded-lg titleBox ">
           <p style={{textAlign:'center'}}>
           Way2Agribusiness India Pvt. Ltd. (Way2ABI)
@@ -106,7 +117,7 @@ export default function About() {
             ವೇ2ಅಗ್ರಿಬಿಸ್ನೆಸ್ ಇಂಡಿಯಾ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್
           </p>
         </div>
-      )}
+    
         <div className="business flex flex-col md:flex-row items-center justify-center px-3 m-5 bg-white-100 max-w-6xl rounded-lg aboutBox">
           <img
             src={way2AbiLogo}
@@ -830,9 +841,9 @@ export default function About() {
           <div className="mt-3">
            
             <div className="imagesContainer">
-              {credentials &&
-                credentials.length > 0 &&
-                credentials
+              {credentialfetch &&
+                credentialfetch.length > 0 &&
+                credentialfetch
                   .filter((image) => image.type === 'Awards')
                   .map((image) => (
                     <div
@@ -861,9 +872,9 @@ export default function About() {
           <div className="mt-3">
             
             <div className="imagesContainer flex justify-around ">
-              {credentials &&
-                credentials.length > 0 &&
-                credentials
+              {credentialfetch &&
+                credentialfetch.length > 0 &&
+                credentialfetch
                   .filter((imageObj) => imageObj.type === 'Media Coverages')
                   .map((imageObj) => (
                     <div
@@ -892,9 +903,9 @@ export default function About() {
           <div className="mt-3">
             
             <div className="imagesContainer flex justify-around ">
-              {credentials &&
-                credentials.length > 0 &&
-                credentials
+              {credentialfetch &&
+                credentialfetch.length > 0 &&
+                credentialfetch
                   .filter((image) => image.type === 'Approvals and Licenses')
                   .map((image) => (
                     <div
@@ -960,15 +971,14 @@ export default function About() {
           </div>
         </div>
         {/* collabration */}
-        
         <div className="text-center font-bold text-xl text-yellow-400  m-2 p-2 collaboration">
-          <h3 className="heading2 text-center">Collaboration</h3>
+          <h3 className="heading2 text-center mx-auto">Collaboration</h3>
           <div className="wrappero">
             <div className="marquee">
               
               <div className="marquee_div">
-                {brandsnew.brands &&
-                  brandsnew.brands.map((brand) => (
+                {brandfetch &&
+                  brandfetch.map((brand) => (
                     <Image 
                       key={brand.id}
                       src={brand.imageurl}
@@ -990,6 +1000,7 @@ export default function About() {
                   
   );
 }
+export default dynamic(()=>Promise.resolve(About),{ssr:false})
 // export async function getServerSideProps() {
 //   const res5 = await fetch(`${process.env.SERVER_HOST}/store/seo`);
 //   const seo = await res5.json();
@@ -999,3 +1010,12 @@ export default function About() {
 //   const brands = await res7.json();
 //   return { props: { seo, cred, brands } };
 // }
+/*export async function getServerSideProps() {
+  const res5 = await axios.get(`http://127.0.0.1:4000/api/v1/getSeo`);
+  const seo = await res5.data.data
+  const res6 = await axios.get(`http://127.0.0.1:4000/api/v1/credentials`);
+  const cred = await res6.data.credentials
+  const res7 = await axios.get(`http://127.0.0.1:4000/api/v1/brands`);
+  const brands = await res7.data.brands
+  return { props: { seo, cred, brands } };
+}*/

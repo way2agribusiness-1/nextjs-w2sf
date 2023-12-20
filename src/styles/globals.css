@@ -791,7 +791,7 @@
 }
 .text {
   line-height: 28px;
-  flex-basis: 50%;
+  flex-basis: 163%;
   
   font-size: 15px;
   margin-right: 100px;
@@ -822,8 +822,8 @@
 }
 .wrappero {
   overflow: hidden;
-  margin-left: 130px !important;
-  width: 85% !important;
+  
+  
   border-radius: 10px;
   background-color: rgba(222, 247, 230, 0.8);
 }
