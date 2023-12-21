@@ -5,13 +5,14 @@ import ProductSlider from './ProductSlider/ProductSlider';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getSliderProducts } from '../../actions/productAction';
 import { useSnackbar } from 'notistack';
-import { Helmet } from 'react-helmet';
+
 import SubNav from '../Layouts/SubNav';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import { getSeo } from '../../actions/seoAction';
 
 import Products from '../Products/Products';
+import Head from 'next/head';
 const Home = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -50,7 +51,7 @@ const Home = () => {
   return (
     <>
       {/* <MetaData title="Online Shopping Site for Agritech, AgriClinic, MarketMitra, Knowledgecentre, ABout us, contactus, waysmartfarnmer. Best Offers on Way2Agribusinesss!" /> */}
-      <Helmet>
+      <Head>
         <title>
           Online Shopping Site for Agritech, AgriClinic, MarketMitra,
           Knowledgecentre, ABout us, contactus, waysmartfarnmer. Best Offers on
@@ -73,7 +74,7 @@ const Home = () => {
           Way2Agribusinesss!"
         ></meta>
         <meta name="og:description" content={metaDesc} />
-      </Helmet>
+      </Head>
       <div className="hidden">
         {backlinks?.split(',').map((backlink, index) => (
           <a

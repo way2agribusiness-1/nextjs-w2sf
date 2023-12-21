@@ -19,23 +19,24 @@ import { categories } from '../../utils/constants';
 import { subCategories } from '../../utils/constants';
 import MetaData from '../Layouts/MetaData';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Products = () => {
-  const navigate = useNavigate();
+  const router=useRouter();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
-  const location = useLocation();
+ const{query}=router
   // console.log(location)
   const intialCategory =
-    location.search[1] === 'c'
-      ? location.search.split('=')[1].replaceAll('%20', ' ')
+    router.query[1] === 'c'
+      ? router.query.c.replaceAll('%20', ' ')
       : '';
   const intialSubCategory =
-    location.search[1] === 's'
-      ? location.search.split('=')[1].replaceAll('%20', ' ')
+    router.query[1] === 's'
+      ? router.query.s.replaceAll('%20', ' ')
       : '';
   const [price, setPrice] = useState([0, 250000]);
   const [category, setCategory] = useState(intialCategory);
@@ -52,7 +53,7 @@ const Products = () => {
 
   const { products, loading, error, resultPerPage, filteredProductsCount } =
     useSelector((state) => state.products);
-  let keyword = params.keyword;
+  let keyword = router.query.keyword;
 
   const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
@@ -330,7 +331,7 @@ const Products = () => {
                     Clear Filters
                   </button>
                   <button
-                    onClick={() => navigate('/agritechproducts')}
+                    onClick={() => router.push('/agritechproducts')}
                     className="bg-gray-500 p-2 rounded-md m-2 text-white"
                   >
                     Clear Search

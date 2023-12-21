@@ -10,9 +10,19 @@ import SubNav from '../components/Layouts/SubNav';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import { getSeo } from '../actions/seoAction';
-
+import { getServerSidebackend2 } from '@/lib/database';
+export async function getServerSideProps(){
+const datafetch=await getServerSidebackend2()
+return {
+  props:{
+    datafetch
+  }
+  
+}
+}
 import Products from '../components/Products/Products';
-const Home = () => {
+import axios from 'axios';
+const Home = ({datafetch}) => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -44,7 +54,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-   
+    dispatch(getSeo());
     //eslint-disable-next-line
   }, []);
   return (
@@ -75,7 +85,17 @@ const Home = () => {
         <meta name="og:description" content={metaDesc} />
       </Head>
       <div className="hidden">
-        
+        {backlinks?.split(',').map((backlink, index) => (
+          <a
+            key={index}
+            href={backlink.trim()}
+            target="_blank"
+            rel="noreferrer"
+            name="backlinks"
+          >
+            {backlink.trim()}
+          </a>
+        ))}
       </div>
       {/* <NavigationBar /> */}
       <div className={mobileView ? '' : 'mt-14'}>

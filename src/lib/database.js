@@ -24,6 +24,17 @@ console.log(error)
 return[]
     }
   }
+  export async function getServerSidebackend2(){
+    try{
+const response=await axios.get("http://127.0.0.1:4000/api/v1/products")
+console.log(response.data.products)
+return response.data.products
+    }
+    catch(error){
+      console.log(error)
+      return[]
+    }
+  }
   /*
   export async function Israelform(){
     const [name, setName] = useState("");

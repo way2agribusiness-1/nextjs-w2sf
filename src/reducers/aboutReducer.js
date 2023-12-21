@@ -1,3 +1,4 @@
+
 export const brandsReducer = (state = { brands: [] }, { type, payload }) => {
   switch (type) {
     case 'GET_BRANDS_SUCCESS':

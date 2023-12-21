@@ -193,7 +193,7 @@ const Account = () => {
                     </h4>
                     <p className="text-sm">
                       Your login email id (or mobile number) changes, likewise.
-                      You'll receive all your account related communication on
+                      You&apos;ll receive all your account related communication on
                       your updated email address (or mobile number).
                     </p>
 
@@ -211,9 +211,9 @@ const Account = () => {
                       my email address (or mobile number)?
                     </h4>
                     <p className="text-sm">
-                      Updating your email address (or mobile number) doesn't
+                      Updating your email address (or mobile number) doesn&apos;t
                       invalidate your account. Your account remains fully
-                      functional. You'll continue seeing your Order history,
+                      functional. You&apos;ll continue seeing your Order history,
                       saved information and personal details.
                     </p>
 
@@ -222,7 +222,7 @@ const Account = () => {
                       address?
                     </h4>
                     <p className="text-sm">
-                    Way2SmartFarmer has a 'single sign-on' policy. Any changes will
+                    Way2SmartFarmer has a &apos;single sign-on&apos; policy. Any changes will
                       reflect in your Seller account also.
                     </p>
                   </div>

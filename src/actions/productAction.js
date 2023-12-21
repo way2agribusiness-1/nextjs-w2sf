@@ -50,12 +50,12 @@ export const getProducts =
     try {
       dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-      let url = `/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+      let url = `http://127.0.0.1:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       if (category) {
-        url = `/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+        url = `http://127.0.0.1:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       if (subCategory) {
-        url = `/api/v1/products?keyword=${keyword}&subCategory=${subCategory}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+        url = `http://127.0.0.1:4000/api/v1/products?keyword=${keyword}&subCategory=${subCategory}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       const { data } = await axios.get(url);
 
@@ -76,7 +76,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/products?category=${category}`);
+    const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/products?category=${category}`);
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,
@@ -94,7 +94,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
 export const getProductDetails = (slug) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/product/${slug}`);
+    const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/product/${slug}`);
     console.log(data);
 
     dispatch({
@@ -119,7 +119,7 @@ export const newReview = (reviewData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_REVIEW_REQUEST });
     const config = { header: { 'Content-Type': 'application/json' } };
-    const { data } = await axios.put('/api/v1/review', reviewData, config);
+    const { data } = await axios.put('http://127.0.0.1:4000/api/v1/review', reviewData, config);
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,
@@ -138,7 +138,7 @@ export const getSliderProducts = () => async (dispatch) => {
   try {
     dispatch({ type: SLIDER_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get('/api/v1/products/home');
+    const { data } = await axios.get('http://127.0.0.1:4000/api/v1/products');
 
     dispatch({
       type: SLIDER_PRODUCTS_SUCCESS,
@@ -157,7 +157,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get('/api/v1/admin/products');
+    const { data } = await axios.get('http://127.0.0.1:4000/api/v1/admin/products');
 
     dispatch({
       type: ADMIN_PRODUCTS_SUCCESS,
@@ -177,7 +177,7 @@ export const createProduct = (productData) => async (dispatch) => {
     dispatch({ type: NEW_PRODUCT_REQUEST });
     const config = { header: { 'Content-Type': 'application/json' } };
     const { data } = await axios.post(
-      '/api/v1/admin/product/new',
+      'http://127.0.0.1:4000/api/v1/admin/product/new',
       productData,
       config
     );
@@ -200,7 +200,7 @@ export const updateProduct = (slug, productData) => async (dispatch) => {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
     const config = { header: { 'Content-Type': 'application/json' } };
     const { data } = await axios.put(
-      `/api/v1/admin/product/${slug}`,
+      `http://127.0.0.1:4000/api/v1/admin/product/${slug}`,
       productData,
       config
     );
@@ -221,7 +221,7 @@ export const updateProduct = (slug, productData) => async (dispatch) => {
 export const deleteProduct = (slug) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-    const { data } = await axios.delete(`/api/v1/admin/product/${slug}`);
+    const { data } = await axios.delete(`http://127.0.0.1:4000/api/v1/admin/product/${slug}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -239,7 +239,7 @@ export const deleteProduct = (slug) => async (dispatch) => {
 export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEWS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/reviews?id=${id}`);
+    const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/admin/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEWS_SUCCESS,
@@ -258,7 +258,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/admin/reviews?id=${reviewId}&productId=${productId}`
+      `http://127.0.0.1:4000/api/v1/admin/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({

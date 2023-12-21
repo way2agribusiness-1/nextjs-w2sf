@@ -6,7 +6,7 @@ import {
 
 // Add To Wishlist
 export const addToWishlist = (slug) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/product/${slug}`);
+  const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/product/${slug}`);
 
   dispatch({
     type: ADD_TO_WISHLIST,

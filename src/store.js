@@ -1,7 +1,7 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import thunk from 'redux-thunk';
 import { useEffect } from 'react';
-import { createAsyncThunk,configureStore,createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk,configureStore,createSlice,combineReducers } from '@reduxjs/toolkit';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   forgotPasswordReducer,
@@ -108,7 +108,7 @@ const reducer = combineReducers({
   credentials: credentialsReducer,
   theme:ThemeReducer,
 });
-let initialState={}
+let preloadedState={}
 
 
 if(typeof window!=='undefined'){
@@ -117,7 +117,7 @@ const shippingstorage=localStorage.getItem("shippingInfo")
 const comparestorage=localStorage.getItem("compareItems")
 
 
-initialState = {
+preloadedState = {
   cart: {
     cartItems:cartstorage
       ? JSON.parse(cartstorage)
@@ -133,16 +133,20 @@ initialState = {
   },
 }
 }
-const middleware = [thunk];
-
-
-const store = createStore(
+/*const store = createStore(
   reducer,
   initialState,
   //composeWithDevTools(applyMiddleware(...middleware))
 
 );
+*/
+const store=configureStore({
+  reducer,
+  preloadedState,
+  middleware:(getDefaultMiddleware)=>getDefaultMiddleware()
 
+
+})
 
 
 

@@ -1,6 +1,6 @@
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getDiscount } from '../../utils/functions';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -45,7 +45,7 @@ const Product = ({
     <div className="flex flex-col items-start gap-2 px-4 py-6 m-1 relative shadow-lg rounded-sm bg-white">
       {/* <!-- image  --> */}
       <div className="m-auto">
-        <Link to={`/${urlCategory}/${slug}`}>
+        <Link href={`/${urlCategory}/${slug}`}>
           <div className="w-44 h-48 m-auto">
             <LazyLoadImage
               draggable="false"
@@ -58,7 +58,7 @@ const Product = ({
       </div>
       {/*  product title */}
       <div>
-        <Link to={`/${urlCategory}/${slug}`}>
+        <Link href={`/${urlCategory}/${slug}`}>
           <h2 className="text-sm mt-4 text-black font-medium group-hover:text-primary-blue text-left">
             {name.length > 85 ? `${name.substring(0, 85)}...` : name}
           </h2>
