@@ -19,7 +19,7 @@ setsnackbaropen(false)
     
     const Handlefetch=async()=>{
         try{
-        const res=await axios.get("/api/v1/admin/callbacks")
+        const res=await axios.get("http://127.0.0.1:4000/api/v1/admin/callbacks")
         console.log(res)
         setdataget(res.data.callbacks)
         setsnackbaropen(true)
@@ -35,7 +35,7 @@ setsnackbarseverity('failure')
     }
     const DeleteHandler=async(gotouserid)=>{
 try{
-await axios.delete(`/api/v1/admin/callback/${gotouserid}`)
+await axios.delete(`http://127.0.0.1:4000/api/v1/admin/callback/${gotouserid}`)
 const updateduser=dataget.filter((item)=>item._id!==gotouserid)
 
 setdataget(updateduser)
@@ -54,7 +54,7 @@ catch(error){
     },[])
   return (
     <div className='m-auto mt-11 mb-8 pt-8' >
-            <h1 className='font-bold text-center bg-green-700 rounded-md text-[22px] m-2 pt-1 pb-1 '>Contact Callback</h1>
+            <h1 className='font-bold mx-auto text-center bg-green-700 rounded-md text-[22px] m-2 pt-1 pb-1 '>Contact Callback</h1>
             <div className='m-auto ' >
                 <table className='table-auto w-4.9/5 '>
                     <thead>

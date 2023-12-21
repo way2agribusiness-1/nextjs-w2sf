@@ -43,7 +43,7 @@ export const createOrderCallback = (ordercallbackData) => async (dispatch) => {
     dispatch({ type: NEW_ORDERCALLBACK_REQUEST });
     const config = { header: { 'Content-Type': 'application/json' } };
     const { data } = await axios.post(
-      '/api/v1/ordercallback/new',
+      'http://127.0.0.1:4000/api/v1/ordercallback/new',
       ordercallbackData,
       config
     );
@@ -64,7 +64,7 @@ export const createOrderCallback = (ordercallbackData) => async (dispatch) => {
 export const deleteOrderCallback = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDERCALLBACK_REQUEST });
-    const { data } = await axios.delete(`/api/v1/admin/ordercallback/${id}`);
+    const { data } = await axios.delete(`http://127.0.0.1:4000/api/v1/admin/ordercallback/${id}`);
 
     dispatch({
       type: DELETE_ORDERCALLBACK_SUCCESS,
@@ -83,7 +83,7 @@ export const getAdminOrderCallbacks = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_ORDERCALLBACK_REQUEST });
 
-    const { data } = await axios.get('/api/v1/admin/ordercallbacks');
+    const { data } = await axios.get('http://127.0.0.1:4000/api/v1/admin/ordercallbacks');
 
     dispatch({
       type: ADMIN_ORDERCALLBACK_SUCCESS,

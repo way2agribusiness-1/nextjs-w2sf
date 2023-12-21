@@ -19,7 +19,7 @@ setsnackbaropen(false)
     
     const Handlefetch=async()=>{
         try{
-        const res=await axios.get("/api/v1/admin/callbacks")
+        const res=await axios.get("http://127.0.0.1:4000/api/v1/admin/callbacks")
         setdataget(res.data.callbacks)
         setsnackbaropen(true)
         setsnackbarmessage('Fetched successfully')
