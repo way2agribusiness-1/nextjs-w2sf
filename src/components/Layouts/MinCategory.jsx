@@ -1,5 +1,5 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 
 const categories = [
@@ -18,7 +18,7 @@ const MinCategory = () => {
       <div className="flex items-center justify-between p-0.5">
         {categories.map((el, i) => (
           <Link
-            to="/agritechproducts"
+            href="/agritechproducts"
             key={i}
             className="text-sm p-2 text-gray-800 font-medium hover:text-primary-blue flex items-center gap-0.5 group"
           >

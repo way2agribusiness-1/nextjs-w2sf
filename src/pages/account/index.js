@@ -13,7 +13,7 @@ const Account = () => {
   const router=useRouter();
 
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-
+console.log('user',user)
   useEffect(() => {
     if (isAuthenticated === false) {
       router.push('/login');

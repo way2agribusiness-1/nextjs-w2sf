@@ -35,6 +35,30 @@ return response.data.products
       return[]
     }
   }
+  export async function getProductDetails (dispatch) {
+    try {
+      dispatch({ type: PRODUCT_DETAILS_REQUEST });
+      const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/product/${slug}`);
+      console.log(slug)
+      console.log(data);
+  
+      dispatch({
+        type: PRODUCT_DETAILS_SUCCESS,
+        payload: data.product,
+      });
+    } catch (error) {
+      const errorMessage =
+        error.response && error.response.data
+          ? error.response.data.message
+          : 'An error occurred';
+          
+      dispatch({
+        type: PRODUCT_DETAILS_FAIL,
+        payload: errorMessage,
+      });
+    }
+  };
+  
   /*
   export async function Israelform(){
     const [name, setName] = useState("");

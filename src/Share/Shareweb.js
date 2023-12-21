@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ShareButtons = ({ title, hashtag }) => {
   const [showIcons, setShowIcons] = useState(false);
-  const url = window.location.href;
+  const [urls, setUrls] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setUrls(window.location.href);
+    }
+  }, []);
 
   const handleButtonClick = () => {
     setShowIcons(!showIcons);
   };
 
-  const facebookShare = () => {
-    window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      'facebook-share-dialog',
-      'width=626,height=436'
-    );
-  };
-
-  const twitterShare = () => {
-    window.open(
-      `https://twitter.com/share?url=${encodeURIComponent(
-        url
-      )}&text=${title}&hashtags=${hashtag}`,
-      'twitter-share-dialog',
-      'width=626,height=436'
-    );
-  };
-
-  const linkedinShare = () => {
-    window.open(
-      `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-        url
-      )}&title=${title}`,
-      'linkedin-share-dialog',
-      'width=626,height=436'
-    );
-  };
-
-  const whatsappShare = () => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(url)}`);
+  const openSocialMedia = (socialMedia) => {
+    let url = '';
+    switch (socialMedia) {
+      case 'facebook':
+        url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urls)}`;
+        break;
+      case 'twitter':
+        url = `https://twitter.com/share?url=${encodeURIComponent(urls)}&text=${title}&hashtags=${hashtag}`;
+        break;
+      case 'linkedin':
+        url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(urls)}&title=${title}`;
+        break;
+      case 'whatsapp':
+        url = `https://wa.me/?text=${encodeURIComponent(urls)}`;
+        break;
+      default:
+        break;
+    }
+    window.open(url, `${socialMedia}-share-dialog`, 'width=626,height=436');
   };
 
   return (
@@ -47,16 +42,16 @@ const ShareButtons = ({ title, hashtag }) => {
       </button>
       {showIcons && (
         <div className="share-icons">
-          <button onClick={facebookShare}>
+          <button onClick={() => openSocialMedia('facebook')}>
             <i className="fab fa-facebook-f" />
           </button>
-          <button onClick={twitterShare}>
+          <button onClick={() => openSocialMedia('twitter')}>
             <i className="fab fa-twitter" />
           </button>
-          <button onClick={linkedinShare}>
+          <button onClick={() => openSocialMedia('linkedin')}>
             <i className="fab fa-linkedin-in" />
           </button>
-          <button onClick={whatsappShare}>
+          <button onClick={() => openSocialMedia('whatsapp')}>
             <i className="fab fa-whatsapp" />
           </button>
         </div>

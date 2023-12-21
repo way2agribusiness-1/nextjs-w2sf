@@ -1,4 +1,5 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -135,14 +136,15 @@ const navMenu = [
 
 const Sidebar = ({  setToggleSidebar }) => {
   const[NavItem,setNavitem]=useState(-1)
-
-  const location=useLocation()
-  const[activeTab,setactiveTab]=useState(location.pathname)
+const router=useRouter();
+const{query}=router
+  
+  const[activeTab,setactiveTab]=useState(router.query.pathname)
   const handleToggle=()=>{
     setToggleSidebar(false)
   }
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+ 
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
@@ -150,7 +152,7 @@ const Sidebar = ({  setToggleSidebar }) => {
   const handleLogout = () => {
     dispatch(logoutUser());
     enqueueSnackbar('Logout Successfully', { variant: 'success' });
-    navigate('/login');
+    router.push('/login');
   };
   const handleItemClick=(ref)=>{
     setactiveTab(ref)
@@ -191,7 +193,7 @@ const Sidebar = ({  setToggleSidebar }) => {
             return (
               <Link
                 key={index}
-                to={ref}
+                href={ref}
                 onClick={() => handleItemClick(ref)}
                 className={`${
                   activeTab === ref ? 'bg-gray-700' : 'hover:bg-gray-700'

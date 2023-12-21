@@ -12,7 +12,7 @@ export const addItemsToCart =
   (slug, quantity = 1) =>
   async (dispatch, getState) => {
     console.log('additemcart', slug, quantity);
-    const { data } = await axios.get(`/api/v1/product/${slug}`);
+    const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/product/${slug}`);
     dispatch({
       type: ADD_TO_CART,
       payload: {
@@ -39,7 +39,7 @@ export const addItemsToCart =
 export const addItemsToOrder =
   (id, quantity = 1) =>
   async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`http://127.0.0.1:4000/api/v1/product/${id}`);
 
     dispatch({
       type: ADD_TO_ORDER,

@@ -1,12 +1,15 @@
+
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+
+import ImageZoom from '@/components/ProductDetails/SeparateImage';
+import { useRouter } from 'next/router.js';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import axios from 'axios';
+import { GetStaticProps } from 'next';
 import ReactImageZoom from 'react-image-zoom';
 import Slider from 'react-slick';
-import ImageZoom from './SeparateImage.jsx';
 import {
   ZoomPanPinch,
   TransformComponent,
@@ -15,12 +18,12 @@ import {
 import {
   clearErrors,
   getProductDetails,
-  getSimilarProducts,
+  //getSimilarProducts,
   newReview,
-} from '../../actions/productAction';
-import { NextBtn, PreviousBtn } from '../Home/Banner/Banner';
-import ProductSlider from '../Home/ProductSlider/ProductSlider';
-import Loader from '../Layouts/Loader';
+} from '../../../actions/productAction';
+import { NextBtn, PreviousBtn } from '../../../components/Home/Banner/Banner';
+import ProductSlider from '../../../components/Home/ProductSlider/ProductSlider';
+import Loader from '../../../components/Layouts/Loader';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import StarIcon from '@mui/icons-material/Star';
@@ -35,34 +38,58 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
-import { NEW_REVIEW_RESET } from '../../constants/productConstants';
-import { addItemsToCart } from '../../actions/cartAction';
-import { getDeliveryDate, getDiscount } from '../../utils/functions';
+import { NEW_REVIEW_RESET } from '../../../constants/productConstants';
+import { addItemsToCart } from '../../../actions/cartAction';
+import { getDeliveryDate, getDiscount } from '../../../utils/functions';
 import {
   addToWishlist,
   removeFromWishlist,
-} from '../../actions/wishlistAction';
-import ShareButtons from '../../Share/Shareweb';
-import { addItemsToCompare } from '../../actions/compareAction';
-import { Helmet } from 'react-helmet';
-import { way2AbiLogo } from '../../imageLinks.js';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+} from '../../../actions/wishlistAction';
+import ShareButtons from '../../../Share/Shareweb';
+import { addItemsToCompare } from '../../../actions/compareAction';
 
-const ProductDetails = () => {
+import Head from 'next/head.js';
+import { way2AbiLogo } from '../../../imageLinks';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import dynamic from 'next/dynamic';
+export async function getServerSideProps(router){
+  try{
+    
+    const productSlug=router.query.slug
+    console.log(productSlug)
+  const productdetail=await axios.get(`http://127.0.0.1:4000/api/v1/product/${productSlug}`)
+  console.log(productdetail.data.product)
+  
+  
+  return{
+props:{
+product:productdetail.data.product
+}
+  }
+  }
+  catch(error){
+    console.log("Error fetched",error)
+    return{
+props:{
+product:[]
+}
+    }
+  }
+}
+const ProductDetails = ({product}) => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const params = useParams();
   const router=useRouter()
+  const {query}=router
   // reviews toggle
   const [open, setOpen] = useState(false);
   const [viewAll, setViewAll] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
-
-  const { product, loading, error } = useSelector(
-    (state) => state.productDetails
-  );
- 
+const[datafetch,setdatafetch]=useState([])
+const {products,loading, error } = useSelector(
+  (state) => state.productDetails
+);
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
@@ -84,6 +111,7 @@ const ProductDetails = () => {
 
   const productSlug = router.query.slug;
   console.log(productSlug)
+ 
   let productId;
   const itemInWishlist = wishlistItems.some((i) => i.slug === productSlug);
   const addToWishlistHandler = () => {
@@ -164,18 +192,22 @@ const ProductDetails = () => {
     enqueueSnackbar,
   ]);
   useEffect(() => {
-    dispatch(getSimilarProducts(product?.category));
+    //dispatch(getSimilarProducts(product?.category));
     // eslint-disable-next-line
   }, [product]);
+  
+ 
   return (
     <>
+    
       {loading ? (
         <Loader />
       ) : (
         <>
           {/* <MetaData title={product.name} /> */}
-          <Helmet>
+          <Head>
             <title>{product.name}</title>
+           
             <Link
               rel="canonical"
               href={`https://www.way2smartfarmer.com/${
@@ -184,15 +216,17 @@ const ProductDetails = () => {
                   ? 'agritech'
                   : 'agriclinic'
               }/${productSlug}`}
-          ></Link>
-          </Helmet>
+            ></Link>
+          </Head>
           {/* <MinCategory /> */}
+          
           <main className="mt-0">
             {/* <!-- product image & description container --> */}
             <div className="flex flex-col bg-white">
+              
               <button
                 className="rounded z-30  lg:mt-20 ml-3 w-12 bg-gray-300 p-2 !important "
-                onClick={() => router.push(-1)}
+                onClick={() => (-1)}
               >
                 Back
               </button>
@@ -601,10 +635,13 @@ const ProductDetails = () => {
               </div>
             </div>
           </main>
+
         </>
       )}
+                                   
     </>
+                      
   );
 };
 
-export default ProductDetails;
+export default dynamic(()=>Promise.resolve(ProductDetails),{ssr:false})

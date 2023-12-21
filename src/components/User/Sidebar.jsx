@@ -6,13 +6,14 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ChatIcon from '@mui/icons-material/Chat';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../actions/userAction';
+import { useRouter } from 'next/router';
 
 const Sidebar = ({ activeTab }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router=useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
@@ -20,7 +21,7 @@ const Sidebar = ({ activeTab }) => {
   const handleLogout = () => {
     dispatch(logoutUser());
     enqueueSnackbar('Logout Successfully', { variant: 'success' });
-    navigate('/login');
+    router.push('/login');
   };
 
   return (
@@ -45,7 +46,7 @@ const Sidebar = ({ activeTab }) => {
           </span>
           <Link
             className="flex w-full justify-between font-medium text-gray-500 hover:text-primary-blue"
-            to="/orders"
+            href="/orders"
           >
             MY ORDERS
             <span>
@@ -66,7 +67,7 @@ const Sidebar = ({ activeTab }) => {
         </div>
         <div className="flex flex-col pb-3 border-b text-sm">
           <Link
-            to="/account"
+            href="/account"
             className={`${
               activeTab === 'profile'
                 ? 'bg-blue-50 text-primary-blue font-medium'
@@ -77,13 +78,13 @@ const Sidebar = ({ activeTab }) => {
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             Manage Addresses
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             PAN Card Information
           </Link>
@@ -102,20 +103,20 @@ const Sidebar = ({ activeTab }) => {
         <div className="flex flex-col pb-3 border-b text-sm">
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue flex justify-between pr-6"
-            to="/"
+            href="/"
           >
             Gift Cards{' '}
             <span className="font-medium text-primary-green">₹0</span>
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             Saved UPI
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             Saved Cards
           </Link>
@@ -129,7 +130,7 @@ const Sidebar = ({ activeTab }) => {
           </span>
           <Link
             className="flex w-full justify-between font-medium text-gray-500 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             MY CHATS
             <span>
@@ -151,24 +152,24 @@ const Sidebar = ({ activeTab }) => {
         <div className="flex flex-col pb-3 border-b text-sm">
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             My Coupons
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             My Reviews & Ratings
           </Link>
           <Link
             className="p-3 pl-14 hover:bg-blue-50 hover:text-primary-blue"
-            to="/"
+            href="/"
           >
             All Notifications
           </Link>
           <Link
-            to="/wishlist"
+            href="/wishlist"
             className={`${
               activeTab === 'wishlist'
                 ? 'bg-blue-50 text-primary-blue font-medium'
@@ -203,9 +204,9 @@ const Sidebar = ({ activeTab }) => {
       <div className="flex flex-col items-start gap-2 p-4 rounded-sm shadow">
         <span className="text-xs font-medium">Frequently Visited:</span>
         <div className="flex gap-2.5 text-xs text-gray-500">
-          <Link to="/password/update">Change Password</Link>
-          <Link to="/orders">Track Order</Link>
-          <Link to="/">Help Center</Link>
+          <Link href="/password/update">Change Password</Link>
+          <Link href="/orders">Track Order</Link>
+          <Link href="/">Help Center</Link>
         </div>
       </div>
       {/* <!-- frequenty visited tab --> */}

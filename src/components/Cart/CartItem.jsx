@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../../actions/cartAction';
 import { getDeliveryDate, getDiscount } from '../../utils/functions';
 import { saveForLater } from '../../actions/saveForLaterAction';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const CartItem = ({
   product,
@@ -57,7 +57,7 @@ const CartItem = ({
       key={product}
     >
       <Link
-        to={`/${
+        href={`/${
           category === 'Farm Machinaries' ||
           category === 'Implements and Others'
             ? 'agritech'

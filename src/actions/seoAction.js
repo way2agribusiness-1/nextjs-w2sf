@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getSeo = () => async (dispatch) => {
   try {
-    const { data } = await axios.get('/api/v1/getSeo');
+    const { data } = await axios.get('http://127.0.0.1:4000/api/v1/getSeo');
     dispatch({
       type: 'GET_SEO_SUCCESS',
       payload: data,

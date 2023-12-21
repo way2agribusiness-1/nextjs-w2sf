@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 const EmptyCart = () => {
     return (
@@ -8,7 +8,7 @@ const EmptyCart = () => {
             </div> */}
             <span className="text-lg">Your cart is empty!</span>
             <p className="text-xs">Add items to it now.</p>
-            <Link to="/agritechproducts" className="bg-primary-blue text-sm text-white px-12 py-2 rounded-sm shadow mt-3">Shop Now</Link>
+            <Link href="/agritechproducts" className="bg-primary-blue text-sm text-white px-12 py-2 rounded-sm shadow mt-3">Shop Now</Link>
         </div>
     );
 };
